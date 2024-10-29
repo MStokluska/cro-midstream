@@ -43,7 +43,7 @@ USER_NAME=cloud-resource-operator
 
 COPY --from=builder /workspace/cloud-resource-operator /usr/local/bin/cloud-resource-operator
 
-COPY build/bin /usr/local/bin
+COPY cloud-resource-operator/build/bin /usr/local/bin
 RUN  /usr/local/bin/user_setup
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]
