@@ -1,7 +1,7 @@
-[submodule "gatekeeper-operator"]
-	path = gatekeeper-operator
-	url = https://github.com/MStokluska/cloud-resource-operator.git
-	branch = master
 [submodule "drift-detection"]
 	path = drift-detection
 	url = https://github.com/arewm/drift-detection
+[submodule "cloud-resource-operator"]
+	path = cloud-resource-operator
+	url = https://github.com/MStokluska/cloud-resource-operator.git
+	branch = master
