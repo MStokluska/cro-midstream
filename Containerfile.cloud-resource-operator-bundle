@@ -9,6 +9,7 @@ COPY bundle-hack .
 COPY cloud-resource-operator/bundles/1.1.4/manifests /manifests/
 COPY cloud-resource-operator/bundles/1.1.4/metadata /metadata/
 
+RUN chmod +x ./update_bundle.sh
 RUN ./update_bundle.sh
 
 FROM scratch
