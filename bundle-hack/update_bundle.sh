@@ -2,7 +2,7 @@
 
 export CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC="quay.io/integreatly/cloud-resource-operator:v1.1.4"
 
-export CSV_FILE=/manifests/gatekeeper-operator.clusterserviceversion.yaml
+export CSV_FILE=/manifests/cloud-resource-operator.clusterserviceversion.yaml
 
 sed -e "s|quay.io/integreatly/cloud-resource-operator:v.*|\"${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC}\"|g" \
 	"${CSV_FILE}"
@@ -60,7 +60,7 @@ cro_csv['metadata']['annotations']['features.operators.openshift.io/token-auth-a
 cro_csv['metadata']['annotations']['features.operators.openshift.io/token-auth-azure'] = 'false'
 cro_csv['metadata']['annotations']['features.operators.openshift.io/token-auth-gcp'] = 'false'
 
-dump_manifest(os.getenv('CSV_FILE'), gatekeeper_csv)
+dump_manifest(os.getenv('CSV_FILE'), cro_csv)
 CSV_UPDATE
 
 cat $CSV_FILE
