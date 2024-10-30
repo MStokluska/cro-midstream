@@ -4,13 +4,8 @@ export CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC="quay.io/redhat-user-workloads/mst
 
 export CSV_FILE=/manifests/cloud-resource-operator.clusterserviceversion.yaml
 
-sed -e "s|quay.io/integreatly/cloud-resource-operator:v.*|\"${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC}\"|g" \
+sed -i -e "s|quay.io/integreatly/cloud-resource-operator:v.*|\"${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC}\"|g" \
 	"${CSV_FILE}"
-
-export AMD64_BUILT=$(skopeo inspect --raw docker://${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC} | jq -e '.manifests[] | select(.platform.architecture=="amd64")')
-export ARM64_BUILT=$(skopeo inspect --raw docker://${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC} | jq -e '.manifests[] | select(.platform.architecture=="arm64")')
-export PPC64LE_BUILT=$(skopeo inspect --raw docker://${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC} | jq -e '.manifests[] | select(.platform.architecture=="ppc64le")')
-export S390X_BUILT=$(skopeo inspect --raw docker://${CLOUD_RESOURCE_OPERATOR_IMAGE_PULLSPEC} | jq -e '.manifests[] | select(.platform.architecture=="s390x")')
 
 export EPOC_TIMESTAMP=$(date +%s)
 # time for some direct modifications to the csv
@@ -40,14 +35,6 @@ datetime_time = datetime.fromtimestamp(timestamp)
 cro_csv = load_manifest(os.getenv('CSV_FILE'))
 # Add arch and os support labels
 cro_csv['metadata']['labels'] = cro_csv['metadata'].get('labels', {})
-if os.getenv('AMD64_BUILT'):
-	cro_csv['metadata']['labels']['operatorframework.io/arch.amd64'] = 'supported'
-if os.getenv('ARM64_BUILT'):
-	cro_csv['metadata']['labels']['operatorframework.io/arch.arm64'] = 'supported'
-if os.getenv('PPC64LE_BUILT'):
-	cro_csv['metadata']['labels']['operatorframework.io/arch.ppc64le'] = 'supported'
-if os.getenv('S390X_BUILT'):
-	cro_csv['metadata']['labels']['operatorframework.io/arch.s390x'] = 'supported'
 cro_csv['metadata']['labels']['operatorframework.io/os.linux'] = 'supported'
 # Ensure that the created timestamp is current
 cro_csv['metadata']['annotations']['createdAt'] = datetime_time.strftime('%d %b %Y, %H:%M')
