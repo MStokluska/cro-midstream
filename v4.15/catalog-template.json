@@ -205,6 +205,10 @@
                 {
                     "name": "cloud-resources.v1.1.4",
                     "replaces": "cloud-resources.v1.1.3"
+                },
+                {
+                    "name": "cloud-resources.v1.1.5",
+                    "replaces": "cloud-resources.v1.1.4"
                 }
             ],
             "name": "rhmi",
@@ -354,6 +358,10 @@
         {
             "schema": "olm.bundle",
             "image": "quay.io/integreatly/cloud-resource-operator:bundle-v1.1.4"
+        },
+        {
+            "schema": "olm.bundle",
+            "image": "quay.io/redhat-user-workloads/mstoklus-rhmi-tenant/cloud-resource-operator-bundle@sha256:35ac715226c4fbe98d3e3bca20767d77e50967148bf1d0e19648b76a487a2e16"
         }
     ]
 }
