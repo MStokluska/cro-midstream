@@ -361,7 +361,7 @@
         },
         {
             "schema": "olm.bundle",
-            "image": "quay.io/redhat-user-workloads/mstoklus-rhmi-tenant/cloud-resource-operator-bundle@sha256:35ac715226c4fbe98d3e3bca20767d77e50967148bf1d0e19648b76a487a2e16"
+            "image": "quay.io/redhat-user-workloads/mstoklus-rhmi-tenant/cloud-resource-operator-bundle@sha256:c817687a1a7fc6210289650aa4493880bd0d7cf2219ae2daa7926a5b83741489"
         }
     ]
 }
