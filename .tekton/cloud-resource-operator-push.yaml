@@ -29,6 +29,8 @@ spec:
     value: quay.io/redhat-user-workloads/mstoklus-rhmi-tenant/cloud-resource-operator:{{revision}}
   - name: dockerfile
     value: /Containerfile.cloud-resource-operator
+  - name: hermetic
+    value: "true"
   pipelineSpec:
     description: |
       This pipeline is ideal for building container images from a Containerfile while reducing network traffic.
