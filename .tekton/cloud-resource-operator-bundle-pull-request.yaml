@@ -203,8 +203,8 @@ spec:
         params:
         - name: name
           value: prefetch-dependencies
-        - name: dev-package-managers 
-          value: "false"
+#       - name: dev-package-managers 
+#         value: "false"
         - name: bundle
           value: quay.io/konflux-ci/tekton-catalog/task-prefetch-dependencies:0.1@sha256:f53fe5482599b39ae2d1004cf09a2026fd9dd3822ab6ef46b51b4a398b0a3232
         - name: kind
