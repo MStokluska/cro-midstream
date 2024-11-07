@@ -18,6 +18,8 @@ WORKDIR /workspace
 COPY cloud-resource-operator/go.mod go.mod	
 COPY cloud-resource-operator/go.sum go.sum
 
+RUN cat /cachi2/cachi2.env
+
 # cache deps before building and copying source so that we don't need to re-download as much
 # and so that source changes don't invalidate our downloaded layer	
 RUN go mod download
