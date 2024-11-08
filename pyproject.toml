@@ -1,0 +1,6 @@
+[project]
+name = "cloud-resource-operator-bundle"
+version = "0.1.0"
+dependencies = [
+    "ruamel.yaml==0.17.9"
+]
