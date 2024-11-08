@@ -10,6 +10,7 @@ metadata:
     pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch == "main" &&
       (".tekton/cloud-resource-operator-bundle-pull-request.yaml".pathChanged() ||
       ".tekton/cloud-resource-operator-bundle-push.yaml".pathChanged() ||
+      ".tekton/single-arch-build-pipeline.yaml".pathChanged() ||
       "Containerfile.cloud-resource-operator-bundle".pathChanged() ||
       "cloud-resource-operator".pathChanged() ||
       "bundle-hack/***".pathChanged())
