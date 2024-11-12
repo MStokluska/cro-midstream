@@ -31,6 +31,7 @@ COPY cloud-resource-operator/pkg/ pkg/
 COPY cloud-resource-operator/internal/ internal/	
 COPY cloud-resource-operator/version/ version/		
 COPY cloud-resource-operator/test/ test/
+COPY cloud-resource-operator/LICENSE licenses/
 
 # Build	
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o cloud-resource-operator main.go
@@ -44,6 +45,8 @@ USER_NAME=cloud-resource-operator
 COPY --from=builder /workspace/cloud-resource-operator /usr/local/bin/cloud-resource-operator
 
 COPY cloud-resource-operator/build/bin /usr/local/bin
+COPY --from=builder /workspace/licenses /licenses
+
 RUN  /usr/local/bin/user_setup
 
 ENTRYPOINT ["/usr/local/bin/entrypoint"]

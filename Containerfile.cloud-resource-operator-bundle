@@ -13,6 +13,7 @@ FROM builder-runner as builder
 COPY bundle-hack .
 COPY cloud-resource-operator/bundles/1.1.5/manifests /manifests/
 COPY cloud-resource-operator/bundles/1.1.5/metadata /metadata/
+COPY cloud-resource-operator/LICENSE licenses/
 
 RUN chmod +x ./update_bundle.sh
 RUN ./update_bundle.sh
