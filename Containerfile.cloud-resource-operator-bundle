@@ -5,6 +5,7 @@ RUN . /cachi2/cachi2.env && pip3 install /cachi2/output/deps/pip/ruamel.yaml-0.1
 COPY bundle-hack .
 COPY cloud-resource-operator/bundles/1.1.5/manifests /manifests/
 COPY cloud-resource-operator/bundles/1.1.5/metadata /metadata/
+COPY cloud-resource-operator/LICENSE licenses/
 
 RUN chmod +x ./update_bundle.sh
 RUN ./update_bundle.sh
