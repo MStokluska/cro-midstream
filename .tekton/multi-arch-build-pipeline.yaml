@@ -297,6 +297,8 @@ spec:
       params:
       - name: IMAGE
         value: $(tasks.build-image-index.results.IMAGE_URL)
+      - name: ADDITIONAL_TAGS
+        value: $(params.additional-tags)
       runAfter:
       - build-image-index
       taskRef:

@@ -40,6 +40,8 @@ spec:
     value: '{"type": "gomod", "path": "cloud-resource-operator/"}'
   - name: hermetic
     value: "true"
+  - name: additional-tags
+    value: ["pull-request-{{pull_request_number}}"]
   pipelineRef:
     name: build-pipeline
   workspaces:

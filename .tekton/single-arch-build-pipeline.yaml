@@ -137,6 +137,23 @@ spec:
           value: $(tasks.prefetch-dependencies.results.SOURCE_ARTIFACT)
         - name: CACHI2_ARTIFACT
           value: $(tasks.prefetch-dependencies.results.CACHI2_ARTIFACT)
+    - name: apply-tags
+      params:
+      - name: IMAGE
+        value: "$(tasks.build-container.results.IMAGE_URL)"
+      runAfter:
+        - build-container
+      taskRef:
+        params:
+        - name: name
+          value: apply-tags
+        - name: bundle
+          value: quay.io/konflux-ci/tekton-catalog/task-apply-tags:0.1@sha256:e6beb161ed59d7be26317da03e172137b31b26648d3e139558e9a457bc56caff
+        - name: kind
+          value: task
+        - name: ADDITIONAL_TAGS
+          value: $(params.additional-tags)
+        resolver: bundles
     - name: deprecated-base-image-check
       taskRef:
         resolver: bundles
