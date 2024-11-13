@@ -13,7 +13,10 @@ metadata:
       ".tekton/single-arch-build-pipeline.yaml".pathChanged() ||
       "Containerfile.cloud-resource-operator-bundle".pathChanged() ||
       "cloud-resource-operator".pathChanged() ||
-      "bundle-hack/***".pathChanged())
+      "bundle-hack/***".pathChanged() ||
+      "rpms.in.yaml".pathChanged() ||
+      "rpms.lock.yaml".pathChanged() ||
+      "pyproject.toml".pathChanged())
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: cro-midstream
