@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/ubi-minimal@sha256:c0e70387664f30cd9cf2795b547e4a9a51002c44a4a86aa9335ab030134bf392
+FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 RUN microdnf install -y skopeo jq python3 python3-pip
 RUN . /cachi2/cachi2.env && pip3 install /cachi2/output/deps/pip/ruamel.yaml-0.17.9.tar.gz
 
