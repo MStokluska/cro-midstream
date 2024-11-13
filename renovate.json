@@ -2,9 +2,15 @@
     "extends": [
         "github>konflux-ci/mintmaker//config/renovate/renovate.json"
     ],
-    "ignorePaths": ["drift-cache", "requirements-build.in", "requirements-build.txt", "requirements.txt", "Containerfile.cloud-resource-operator", "Containerfile.cloud-resource-operator-bundle"],
+    "ignorePaths": ["drift-cache", "requirements-build.in", "requirements-build.txt", "requirements.txt", "Containerfile.cloud-resource-operator", "Containerfile"],
     "ignoreDeps": [
         "registry.redhat.io/openshift4/ose-operator-registry",
         "registry.redhat.io/openshift4/ose-operator-registry-rhel9"
-    ]
+    ],
+    "dockerfile": {
+      "fileMatch": [
+          "Containerfile.cloud-resource-operator",
+          "Containerfile"
+      ]
+    }
 }
