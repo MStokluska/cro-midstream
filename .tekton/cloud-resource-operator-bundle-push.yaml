@@ -10,7 +10,7 @@ metadata:
       (".tekton/cloud-resource-operator-bundle-pull-request.yaml".pathChanged() ||
       ".tekton/cloud-resource-operator-bundle-push.yaml".pathChanged() ||
       ".tekton/single-arch-build-pipeline.yaml".pathChanged() ||
-      "Containerfile.cloud-resource-operator-bundle".pathChanged() ||
+      "Containerfile".pathChanged() ||
       "cloud-resource-operator".pathChanged() ||
       "bundle-hack/***".pathChanged())
   creationTimestamp: null
@@ -29,7 +29,7 @@ spec:
   - name: output-image
     value: quay.io/redhat-user-workloads/mstoklus-rhmi-tenant/cloud-resource-operator-bundle:{{revision}}
   - name: dockerfile
-    value: Containerfile.cloud-resource-operator-bundle
+    value: Containerfile
   - name: hermetic
     value: "true"
   - name: prefetch-input
