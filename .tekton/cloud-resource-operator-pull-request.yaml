@@ -7,12 +7,10 @@ metadata:
     build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch == "main" &&
-      (".tekton/cloud-resource-operator-pull-request.yaml".pathChanged() ||
-      ".tekton/cloud-resource-operator-push.yaml".pathChanged() ||
-      ".tekton/multi-arch-build-pipeline.yaml".pathChanged() ||
-      "Containerfile.cloud-resource-operator".pathChanged() ||
-      "cloud-resource-operator".pathChanged())
+    pipelinesascode.tekton.dev/on-cel-expression: event == "pull_request" && target_branch
+      == "main" && (".tekton/cloud-resource-operator-pull-request.yaml".pathChanged()
+      || ".tekton/cloud-resource-operator-push.yaml".pathChanged() || ".tekton/multi-arch-build-pipeline.yaml".pathChanged()
+      || "Containerfile.cloud-resource-operator".pathChanged() || "cloud-resource-operator".pathChanged())
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: cro-midstream
@@ -42,7 +40,10 @@ spec:
     value: "true"
   pipelineRef:
     name: build-pipeline
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-cloud-resource-operator
   workspaces:
   - name: git-auth
     secret:
       secretName: '{{ git_auth_secret }}'
+status: {}
