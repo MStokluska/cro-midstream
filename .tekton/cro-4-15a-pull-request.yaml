@@ -356,7 +356,8 @@ spec:
       optional: true
     - name: netrc
       optional: true
-  taskRunTemplate: {}
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-cro-4-15a
   workspaces:
   - name: workspace
     volumeClaimTemplate:
