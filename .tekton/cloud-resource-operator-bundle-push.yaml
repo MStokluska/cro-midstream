@@ -6,16 +6,12 @@ metadata:
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
-    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch == "main" &&
-      (".tekton/cloud-resource-operator-bundle-pull-request.yaml".pathChanged() ||
-      ".tekton/cloud-resource-operator-bundle-push.yaml".pathChanged() ||
-      ".tekton/single-arch-build-pipeline.yaml".pathChanged() ||
-      "Containerfile.cloud-resource-operator-bundle".pathChanged() ||
-      "cloud-resource-operator".pathChanged() ||
-      "bundle-hack/***".pathChanged() ||
-      "rpms.in.yaml".pathChanged() ||
-      "rpms.lock.yaml".pathChanged() ||
-      "pyproject.toml".pathChanged())
+    pipelinesascode.tekton.dev/on-cel-expression: event == "push" && target_branch
+      == "main" && (".tekton/cloud-resource-operator-bundle-pull-request.yaml".pathChanged()
+      || ".tekton/cloud-resource-operator-bundle-push.yaml".pathChanged() || ".tekton/single-arch-build-pipeline.yaml".pathChanged()
+      || "Containerfile.cloud-resource-operator-bundle".pathChanged() || "cloud-resource-operator".pathChanged()
+      || "bundle-hack/***".pathChanged() || "rpms.in.yaml".pathChanged() || "rpms.lock.yaml".pathChanged()
+      || "pyproject.toml".pathChanged())
   creationTimestamp: null
   labels:
     appstudio.openshift.io/application: cro-midstream
@@ -36,14 +32,15 @@ spec:
   - name: hermetic
     value: "true"
   - name: prefetch-input
-    value: 
-      - {"type": "rpm", "path": "."}
-      - {"type": "pip", "path": "."}
+    value: '[{"path":".","type":"rpm"},{"path":".","type":"pip"}]'
   - name: prefetch-dev-package-managers-enabled
     value: "true"
   pipelineRef:
     name: single-arch-build-pipeline
+  taskRunTemplate:
+    serviceAccountName: build-pipeline-cloud-resource-operator-bundle
   workspaces:
   - name: git-auth
     secret:
       secretName: '{{ git_auth_secret }}'
+status: {}
